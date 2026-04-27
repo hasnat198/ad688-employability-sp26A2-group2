@@ -1,0 +1,7 @@
+---
+title: "Semester_Project"
+---
+
+This is the semester project for the course AD688-Cloud Analytics for Business.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

@@ -1,7 +1,36 @@
 ---
 title: "Semester_Project"
+format: html
 ---
 
-This is the semester project for the course AD688-Cloud Analytics for Business.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Load Required Library
+
+```{python}
+import pandas as pd
+```
+
+## Read the CSV File
+
+```{python}
+df = pd.read_csv("data/lightcast_job_postings.csv", low_memory=False)
+df.head()
+```
+
+## Check Dataset Shape
+
+```{python}
+print("Rows and Columns:", df.shape)
+```
+
+## View Column Names
+
+```{python}
+print(df.columns.tolist())
+```
+
+## Basic Summary Statistics
+
+```{python}
+df.describe()
+```

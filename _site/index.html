@@ -20,10 +20,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -68,6 +103,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
 
 
 <link rel="stylesheet" href="styles.css">
@@ -109,8 +150,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#load-required-library" id="toc-load-required-library" class="nav-link active" data-scroll-target="#load-required-library">Load Required Library</a></li>
+  <li><a href="#read-the-csv-file" id="toc-read-the-csv-file" class="nav-link" data-scroll-target="#read-the-csv-file">Read the CSV File</a></li>
+  <li><a href="#check-dataset-shape" id="toc-check-dataset-shape" class="nav-link" data-scroll-target="#check-dataset-shape">Check Dataset Shape</a></li>
+  <li><a href="#view-column-names" id="toc-view-column-names" class="nav-link" data-scroll-target="#view-column-names">View Column Names</a></li>
+  <li><a href="#basic-summary-statistics" id="toc-basic-summary-statistics" class="nav-link" data-scroll-target="#basic-summary-statistics">Basic Summary Statistics</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -134,10 +185,433 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is the semester project for the course AD688-Cloud Analytics for Business.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="load-required-library" class="level2">
+<h2 class="anchored" data-anchor-id="load-required-library">Load Required Library</h2>
+<div id="31109344" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="read-the-csv-file" class="level2">
+<h2 class="anchored" data-anchor-id="read-the-csv-file">Read the CSV File</h2>
+<div id="84b302ed" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/lightcast_job_postings.csv"</span>, low_memory<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">LAST_UPDATED_DATE</th>
+<th data-quarto-table-cell-role="th">LAST_UPDATED_TIMESTAMP</th>
+<th data-quarto-table-cell-role="th">DUPLICATES</th>
+<th data-quarto-table-cell-role="th">POSTED</th>
+<th data-quarto-table-cell-role="th">EXPIRED</th>
+<th data-quarto-table-cell-role="th">DURATION</th>
+<th data-quarto-table-cell-role="th">SOURCE_TYPES</th>
+<th data-quarto-table-cell-role="th">SOURCES</th>
+<th data-quarto-table-cell-role="th">URL</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_2</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_2_NAME</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_3</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_3_NAME</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_4</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_4_NAME</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_5</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_5_NAME</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_6</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_6_NAME</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1f57d95acf4dc67ed2819eb12f049f6a5c11782c</td>
+<td>9/6/2024</td>
+<td>2024-09-06 20:32:57.352 Z</td>
+<td>0.0</td>
+<td>6/2/2024</td>
+<td>6/8/2024</td>
+<td>6.0</td>
+<td>[\n&nbsp;&nbsp;"Company"\n]</td>
+<td>[\n&nbsp;&nbsp;"brassring.com"\n]</td>
+<td>[\n&nbsp;&nbsp;"https://sjobs.brassring.com/TGnewUI/Sear...</td>
+<td>...</td>
+<td>44.0</td>
+<td>Retail Trade</td>
+<td>441.0</td>
+<td>Motor Vehicle and Parts Dealers</td>
+<td>4413.0</td>
+<td>Automotive Parts, Accessories, and Tire Retailers</td>
+<td>44133.0</td>
+<td>Automotive Parts and Accessories Retailers</td>
+<td>441330.0</td>
+<td>Automotive Parts and Accessories Retailers</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>0cb072af26757b6c4ea9464472a50a443af681ac</td>
+<td>8/2/2024</td>
+<td>2024-08-02 17:08:58.838 Z</td>
+<td>0.0</td>
+<td>6/2/2024</td>
+<td>8/1/2024</td>
+<td>NaN</td>
+<td>[\n&nbsp;&nbsp;"Job Board"\n]</td>
+<td>[\n&nbsp;&nbsp;"maine.gov"\n]</td>
+<td>[\n&nbsp;&nbsp;"https://joblink.maine.gov/jobs/1085740"\n]</td>
+<td>...</td>
+<td>56.0</td>
+<td>Administrative and Support and Waste Managemen...</td>
+<td>561.0</td>
+<td>Administrative and Support Services</td>
+<td>5613.0</td>
+<td>Employment Services</td>
+<td>56132.0</td>
+<td>Temporary Help Services</td>
+<td>561320.0</td>
+<td>Temporary Help Services</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>85318b12b3331fa490d32ad014379df01855c557</td>
+<td>9/6/2024</td>
+<td>2024-09-06 20:32:57.352 Z</td>
+<td>1.0</td>
+<td>6/2/2024</td>
+<td>7/7/2024</td>
+<td>35.0</td>
+<td>[\n&nbsp;&nbsp;"Job Board"\n]</td>
+<td>[\n&nbsp;&nbsp;"dejobs.org"\n]</td>
+<td>[\n&nbsp;&nbsp;"https://dejobs.org/dallas-tx/data-analys...</td>
+<td>...</td>
+<td>52.0</td>
+<td>Finance and Insurance</td>
+<td>524.0</td>
+<td>Insurance Carriers and Related Activities</td>
+<td>5242.0</td>
+<td>Agencies, Brokerages, and Other Insurance Rela...</td>
+<td>52429.0</td>
+<td>Other Insurance Related Activities</td>
+<td>524291.0</td>
+<td>Claims Adjusting</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>1b5c3941e54a1889ef4f8ae55b401a550708a310</td>
+<td>9/6/2024</td>
+<td>2024-09-06 20:32:57.352 Z</td>
+<td>1.0</td>
+<td>6/2/2024</td>
+<td>7/20/2024</td>
+<td>48.0</td>
+<td>[\n&nbsp;&nbsp;"Job Board"\n]</td>
+<td>[\n&nbsp;&nbsp;"disabledperson.com",\n&nbsp;&nbsp;"dejobs.org"\n]</td>
+<td>[\n&nbsp;&nbsp;"https://www.disabledperson.com/jobs/5948...</td>
+<td>...</td>
+<td>52.0</td>
+<td>Finance and Insurance</td>
+<td>522.0</td>
+<td>Credit Intermediation and Related Activities</td>
+<td>5221.0</td>
+<td>Depository Credit Intermediation</td>
+<td>52211.0</td>
+<td>Commercial Banking</td>
+<td>522110.0</td>
+<td>Commercial Banking</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>cb5ca25f02bdf25c13edfede7931508bfd9e858f</td>
+<td>6/19/2024</td>
+<td>2024-06-19 07:00:00.000 Z</td>
+<td>0.0</td>
+<td>6/2/2024</td>
+<td>6/17/2024</td>
+<td>15.0</td>
+<td>[\n&nbsp;&nbsp;"FreeJobBoard"\n]</td>
+<td>[\n&nbsp;&nbsp;"craigslist.org"\n]</td>
+<td>[\n&nbsp;&nbsp;"https://modesto.craigslist.org/sls/77475...</td>
+<td>...</td>
+<td>99.0</td>
+<td>Unclassified Industry</td>
+<td>999.0</td>
+<td>Unclassified Industry</td>
+<td>9999.0</td>
+<td>Unclassified Industry</td>
+<td>99999.0</td>
+<td>Unclassified Industry</td>
+<td>999999.0</td>
+<td>Unclassified Industry</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 131 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="check-dataset-shape" class="level2">
+<h2 class="anchored" data-anchor-id="check-dataset-shape">Check Dataset Shape</h2>
+<div id="8b90cc7f" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rows and Columns:"</span>, df.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows and Columns: (72498, 131)</code></pre>
+</div>
+</div>
+</section>
+<section id="view-column-names" class="level2">
+<h2 class="anchored" data-anchor-id="view-column-names">View Column Names</h2>
+<div id="4e091d65" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns.tolist())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['ID', 'LAST_UPDATED_DATE', 'LAST_UPDATED_TIMESTAMP', 'DUPLICATES', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES', 'SOURCES', 'URL', 'ACTIVE_URLS', 'ACTIVE_SOURCES_INFO', 'TITLE_RAW', 'BODY', 'MODELED_EXPIRED', 'MODELED_DURATION', 'COMPANY', 'COMPANY_NAME', 'COMPANY_RAW', 'COMPANY_IS_STAFFING', 'EDUCATION_LEVELS', 'EDUCATION_LEVELS_NAME', 'MIN_EDULEVELS', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS', 'MAX_EDULEVELS_NAME', 'EMPLOYMENT_TYPE', 'EMPLOYMENT_TYPE_NAME', 'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'IS_INTERNSHIP', 'SALARY', 'REMOTE_TYPE', 'REMOTE_TYPE_NAME', 'ORIGINAL_PAY_PERIOD', 'SALARY_TO', 'SALARY_FROM', 'LOCATION', 'CITY', 'CITY_NAME', 'COUNTY', 'COUNTY_NAME', 'MSA', 'MSA_NAME', 'STATE', 'STATE_NAME', 'COUNTY_OUTGOING', 'COUNTY_NAME_OUTGOING', 'COUNTY_INCOMING', 'COUNTY_NAME_INCOMING', 'MSA_OUTGOING', 'MSA_NAME_OUTGOING', 'MSA_INCOMING', 'MSA_NAME_INCOMING', 'NAICS2', 'NAICS2_NAME', 'NAICS3', 'NAICS3_NAME', 'NAICS4', 'NAICS4_NAME', 'NAICS5', 'NAICS5_NAME', 'NAICS6', 'NAICS6_NAME', 'TITLE', 'TITLE_NAME', 'TITLE_CLEAN', 'SKILLS', 'SKILLS_NAME', 'SPECIALIZED_SKILLS', 'SPECIALIZED_SKILLS_NAME', 'CERTIFICATIONS', 'CERTIFICATIONS_NAME', 'COMMON_SKILLS', 'COMMON_SKILLS_NAME', 'SOFTWARE_SKILLS', 'SOFTWARE_SKILLS_NAME', 'ONET', 'ONET_NAME', 'ONET_2019', 'ONET_2019_NAME', 'CIP6', 'CIP6_NAME', 'CIP4', 'CIP4_NAME', 'CIP2', 'CIP2_NAME', 'SOC_2021_2', 'SOC_2021_2_NAME', 'SOC_2021_3', 'SOC_2021_3_NAME', 'SOC_2021_4', 'SOC_2021_4_NAME', 'SOC_2021_5', 'SOC_2021_5_NAME', 'LOT_CAREER_AREA', 'LOT_CAREER_AREA_NAME', 'LOT_OCCUPATION', 'LOT_OCCUPATION_NAME', 'LOT_SPECIALIZED_OCCUPATION', 'LOT_SPECIALIZED_OCCUPATION_NAME', 'LOT_OCCUPATION_GROUP', 'LOT_OCCUPATION_GROUP_NAME', 'LOT_V6_SPECIALIZED_OCCUPATION', 'LOT_V6_SPECIALIZED_OCCUPATION_NAME', 'LOT_V6_OCCUPATION', 'LOT_V6_OCCUPATION_NAME', 'LOT_V6_OCCUPATION_GROUP', 'LOT_V6_OCCUPATION_GROUP_NAME', 'LOT_V6_CAREER_AREA', 'LOT_V6_CAREER_AREA_NAME', 'SOC_2', 'SOC_2_NAME', 'SOC_3', 'SOC_3_NAME', 'SOC_4', 'SOC_4_NAME', 'SOC_5', 'SOC_5_NAME', 'LIGHTCAST_SECTORS', 'LIGHTCAST_SECTORS_NAME', 'NAICS_2022_2', 'NAICS_2022_2_NAME', 'NAICS_2022_3', 'NAICS_2022_3_NAME', 'NAICS_2022_4', 'NAICS_2022_4_NAME', 'NAICS_2022_5', 'NAICS_2022_5_NAME', 'NAICS_2022_6', 'NAICS_2022_6_NAME']</code></pre>
+</div>
+</div>
+</section>
+<section id="basic-summary-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="basic-summary-statistics">Basic Summary Statistics</h2>
+<div id="2d401934" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">DUPLICATES</th>
+<th data-quarto-table-cell-role="th">DURATION</th>
+<th data-quarto-table-cell-role="th">MODELED_DURATION</th>
+<th data-quarto-table-cell-role="th">COMPANY</th>
+<th data-quarto-table-cell-role="th">MIN_EDULEVELS</th>
+<th data-quarto-table-cell-role="th">MAX_EDULEVELS</th>
+<th data-quarto-table-cell-role="th">EMPLOYMENT_TYPE</th>
+<th data-quarto-table-cell-role="th">MIN_YEARS_EXPERIENCE</th>
+<th data-quarto-table-cell-role="th">MAX_YEARS_EXPERIENCE</th>
+<th data-quarto-table-cell-role="th">SALARY</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">LOT_OCCUPATION_GROUP</th>
+<th data-quarto-table-cell-role="th">LOT_V6_SPECIALIZED_OCCUPATION</th>
+<th data-quarto-table-cell-role="th">LOT_V6_OCCUPATION</th>
+<th data-quarto-table-cell-role="th">LOT_V6_OCCUPATION_GROUP</th>
+<th data-quarto-table-cell-role="th">LOT_V6_CAREER_AREA</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_2</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_3</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_4</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_5</th>
+<th data-quarto-table-cell-role="th">NAICS_2022_6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>72476.000000</td>
+<td>45182.000000</td>
+<td>53208.000000</td>
+<td>7.245400e+04</td>
+<td>72454.000000</td>
+<td>16315.000000</td>
+<td>72454.000000</td>
+<td>49352.000000</td>
+<td>8430.000000</td>
+<td>30808.000000</td>
+<td>...</td>
+<td>72454.000000</td>
+<td>7.245400e+04</td>
+<td>72454.000000</td>
+<td>72454.000000</td>
+<td>72454.000000</td>
+<td>72454.000000</td>
+<td>72454.000000</td>
+<td>72454.000000</td>
+<td>72454.000000</td>
+<td>72454.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">mean</th>
+<td>1.081627</td>
+<td>22.322695</td>
+<td>19.737615</td>
+<td>3.702704e+07</td>
+<td>31.482527</td>
+<td>2.833834</td>
+<td>1.058768</td>
+<td>5.486444</td>
+<td>3.773903</td>
+<td>117953.755031</td>
+<td>...</td>
+<td>2239.204475</td>
+<td>2.239318e+07</td>
+<td>223931.694096</td>
+<td>2239.204475</td>
+<td>22.281158</td>
+<td>58.352555</td>
+<td>587.864590</td>
+<td>5883.121995</td>
+<td>58834.317125</td>
+<td>588345.683937</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">std</th>
+<td>2.807512</td>
+<td>14.359085</td>
+<td>12.963769</td>
+<td>3.015089e+07</td>
+<td>44.747433</td>
+<td>0.584028</td>
+<td>0.286997</td>
+<td>3.322241</td>
+<td>2.576739</td>
+<td>45133.878359</td>
+<td>...</td>
+<td>285.424309</td>
+<td>2.854275e+06</td>
+<td>28542.747473</td>
+<td>285.424309</td>
+<td>2.854360</td>
+<td>18.626415</td>
+<td>186.259064</td>
+<td>1864.093904</td>
+<td>18642.971892</td>
+<td>186431.744508</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">min</th>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000e+00</td>
+<td>0.000000</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>15860.000000</td>
+<td>...</td>
+<td>1111.000000</td>
+<td>1.111101e+07</td>
+<td>111110.000000</td>
+<td>1111.000000</td>
+<td>11.000000</td>
+<td>11.000000</td>
+<td>111.000000</td>
+<td>1111.000000</td>
+<td>11115.000000</td>
+<td>111150.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">25%</th>
+<td>0.000000</td>
+<td>11.000000</td>
+<td>10.000000</td>
+<td>6.505993e+06</td>
+<td>2.000000</td>
+<td>3.000000</td>
+<td>1.000000</td>
+<td>3.000000</td>
+<td>2.000000</td>
+<td>84928.500000</td>
+<td>...</td>
+<td>2310.000000</td>
+<td>2.310101e+07</td>
+<td>231010.000000</td>
+<td>2310.000000</td>
+<td>23.000000</td>
+<td>52.000000</td>
+<td>522.000000</td>
+<td>5223.000000</td>
+<td>52232.000000</td>
+<td>522320.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">50%</th>
+<td>0.000000</td>
+<td>18.000000</td>
+<td>16.000000</td>
+<td>3.761516e+07</td>
+<td>2.000000</td>
+<td>3.000000</td>
+<td>1.000000</td>
+<td>5.000000</td>
+<td>3.000000</td>
+<td>116300.000000</td>
+<td>...</td>
+<td>2311.000000</td>
+<td>2.311131e+07</td>
+<td>231113.000000</td>
+<td>2311.000000</td>
+<td>23.000000</td>
+<td>54.000000</td>
+<td>541.000000</td>
+<td>5415.000000</td>
+<td>54151.000000</td>
+<td>541519.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">75%</th>
+<td>1.000000</td>
+<td>32.000000</td>
+<td>28.000000</td>
+<td>4.330689e+07</td>
+<td>99.000000</td>
+<td>3.000000</td>
+<td>1.000000</td>
+<td>8.000000</td>
+<td>5.000000</td>
+<td>145600.000000</td>
+<td>...</td>
+<td>2311.000000</td>
+<td>2.311131e+07</td>
+<td>231113.000000</td>
+<td>2311.000000</td>
+<td>23.000000</td>
+<td>56.000000</td>
+<td>561.000000</td>
+<td>5614.000000</td>
+<td>56149.000000</td>
+<td>561499.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">max</th>
+<td>100.000000</td>
+<td>59.000000</td>
+<td>59.000000</td>
+<td>1.082365e+08</td>
+<td>99.000000</td>
+<td>4.000000</td>
+<td>3.000000</td>
+<td>15.000000</td>
+<td>14.000000</td>
+<td>500000.000000</td>
+<td>...</td>
+<td>2712.000000</td>
+<td>2.712111e+07</td>
+<td>271211.000000</td>
+<td>2712.000000</td>
+<td>27.000000</td>
+<td>99.000000</td>
+<td>999.000000</td>
+<td>9999.000000</td>
+<td>99999.000000</td>
+<td>999999.000000</td>
+</tr>
+</tbody>
+</table>
+
+<p>8 rows × 38 columns</p>
+</div>
+</div>
+</div>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

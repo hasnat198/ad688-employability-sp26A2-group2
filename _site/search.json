@@ -4,13 +4,48 @@
     "href": "index.html",
     "title": "Semester_Project",
     "section": "",
-    "text": "This is the semester project for the course AD688-Cloud Analytics for Business.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "import pandas as pd"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "This project is completed by below students from Boston University:\nStudent 1: Bakdaulet Karakulov\nStudent 2: Hasnat Ahsan"
+  },
+  {
+    "objectID": "index.html#load-required-library",
+    "href": "index.html#load-required-library",
+    "title": "Semester_Project",
+    "section": "",
+    "text": "import pandas as pd"
+  },
+  {
+    "objectID": "index.html#read-the-csv-file",
+    "href": "index.html#read-the-csv-file",
+    "title": "Semester_Project",
+    "section": "Read the CSV File",
+    "text": "Read the CSV File\n\ndf = pd.read_csv(\"data/lightcast_job_postings.csv\", low_memory=False)\ndf.head()\n\n\n\n\n\n\n\n\nID\nLAST_UPDATED_DATE\nLAST_UPDATED_TIMESTAMP\nDUPLICATES\nPOSTED\nEXPIRED\nDURATION\nSOURCE_TYPES\nSOURCES\nURL\n...\nNAICS_2022_2\nNAICS_2022_2_NAME\nNAICS_2022_3\nNAICS_2022_3_NAME\nNAICS_2022_4\nNAICS_2022_4_NAME\nNAICS_2022_5\nNAICS_2022_5_NAME\nNAICS_2022_6\nNAICS_2022_6_NAME\n\n\n\n\n0\n1f57d95acf4dc67ed2819eb12f049f6a5c11782c\n9/6/2024\n2024-09-06 20:32:57.352 Z\n0.0\n6/2/2024\n6/8/2024\n6.0\n[\\n  \"Company\"\\n]\n[\\n  \"brassring.com\"\\n]\n[\\n  \"https://sjobs.brassring.com/TGnewUI/Sear...\n...\n44.0\nRetail Trade\n441.0\nMotor Vehicle and Parts Dealers\n4413.0\nAutomotive Parts, Accessories, and Tire Retailers\n44133.0\nAutomotive Parts and Accessories Retailers\n441330.0\nAutomotive Parts and Accessories Retailers\n\n\n1\n0cb072af26757b6c4ea9464472a50a443af681ac\n8/2/2024\n2024-08-02 17:08:58.838 Z\n0.0\n6/2/2024\n8/1/2024\nNaN\n[\\n  \"Job Board\"\\n]\n[\\n  \"maine.gov\"\\n]\n[\\n  \"https://joblink.maine.gov/jobs/1085740\"\\n]\n...\n56.0\nAdministrative and Support and Waste Managemen...\n561.0\nAdministrative and Support Services\n5613.0\nEmployment Services\n56132.0\nTemporary Help Services\n561320.0\nTemporary Help Services\n\n\n2\n85318b12b3331fa490d32ad014379df01855c557\n9/6/2024\n2024-09-06 20:32:57.352 Z\n1.0\n6/2/2024\n7/7/2024\n35.0\n[\\n  \"Job Board\"\\n]\n[\\n  \"dejobs.org\"\\n]\n[\\n  \"https://dejobs.org/dallas-tx/data-analys...\n...\n52.0\nFinance and Insurance\n524.0\nInsurance Carriers and Related Activities\n5242.0\nAgencies, Brokerages, and Other Insurance Rela...\n52429.0\nOther Insurance Related Activities\n524291.0\nClaims Adjusting\n\n\n3\n1b5c3941e54a1889ef4f8ae55b401a550708a310\n9/6/2024\n2024-09-06 20:32:57.352 Z\n1.0\n6/2/2024\n7/20/2024\n48.0\n[\\n  \"Job Board\"\\n]\n[\\n  \"disabledperson.com\",\\n  \"dejobs.org\"\\n]\n[\\n  \"https://www.disabledperson.com/jobs/5948...\n...\n52.0\nFinance and Insurance\n522.0\nCredit Intermediation and Related Activities\n5221.0\nDepository Credit Intermediation\n52211.0\nCommercial Banking\n522110.0\nCommercial Banking\n\n\n4\ncb5ca25f02bdf25c13edfede7931508bfd9e858f\n6/19/2024\n2024-06-19 07:00:00.000 Z\n0.0\n6/2/2024\n6/17/2024\n15.0\n[\\n  \"FreeJobBoard\"\\n]\n[\\n  \"craigslist.org\"\\n]\n[\\n  \"https://modesto.craigslist.org/sls/77475...\n...\n99.0\nUnclassified Industry\n999.0\nUnclassified Industry\n9999.0\nUnclassified Industry\n99999.0\nUnclassified Industry\n999999.0\nUnclassified Industry\n\n\n\n\n5 rows × 131 columns"
+  },
+  {
+    "objectID": "index.html#check-dataset-shape",
+    "href": "index.html#check-dataset-shape",
+    "title": "Semester_Project",
+    "section": "Check Dataset Shape",
+    "text": "Check Dataset Shape\n\nprint(\"Rows and Columns:\", df.shape)\n\nRows and Columns: (72498, 131)"
+  },
+  {
+    "objectID": "index.html#view-column-names",
+    "href": "index.html#view-column-names",
+    "title": "Semester_Project",
+    "section": "View Column Names",
+    "text": "View Column Names\n\nprint(df.columns.tolist())\n\n['ID', 'LAST_UPDATED_DATE', 'LAST_UPDATED_TIMESTAMP', 'DUPLICATES', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES', 'SOURCES', 'URL', 'ACTIVE_URLS', 'ACTIVE_SOURCES_INFO', 'TITLE_RAW', 'BODY', 'MODELED_EXPIRED', 'MODELED_DURATION', 'COMPANY', 'COMPANY_NAME', 'COMPANY_RAW', 'COMPANY_IS_STAFFING', 'EDUCATION_LEVELS', 'EDUCATION_LEVELS_NAME', 'MIN_EDULEVELS', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS', 'MAX_EDULEVELS_NAME', 'EMPLOYMENT_TYPE', 'EMPLOYMENT_TYPE_NAME', 'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'IS_INTERNSHIP', 'SALARY', 'REMOTE_TYPE', 'REMOTE_TYPE_NAME', 'ORIGINAL_PAY_PERIOD', 'SALARY_TO', 'SALARY_FROM', 'LOCATION', 'CITY', 'CITY_NAME', 'COUNTY', 'COUNTY_NAME', 'MSA', 'MSA_NAME', 'STATE', 'STATE_NAME', 'COUNTY_OUTGOING', 'COUNTY_NAME_OUTGOING', 'COUNTY_INCOMING', 'COUNTY_NAME_INCOMING', 'MSA_OUTGOING', 'MSA_NAME_OUTGOING', 'MSA_INCOMING', 'MSA_NAME_INCOMING', 'NAICS2', 'NAICS2_NAME', 'NAICS3', 'NAICS3_NAME', 'NAICS4', 'NAICS4_NAME', 'NAICS5', 'NAICS5_NAME', 'NAICS6', 'NAICS6_NAME', 'TITLE', 'TITLE_NAME', 'TITLE_CLEAN', 'SKILLS', 'SKILLS_NAME', 'SPECIALIZED_SKILLS', 'SPECIALIZED_SKILLS_NAME', 'CERTIFICATIONS', 'CERTIFICATIONS_NAME', 'COMMON_SKILLS', 'COMMON_SKILLS_NAME', 'SOFTWARE_SKILLS', 'SOFTWARE_SKILLS_NAME', 'ONET', 'ONET_NAME', 'ONET_2019', 'ONET_2019_NAME', 'CIP6', 'CIP6_NAME', 'CIP4', 'CIP4_NAME', 'CIP2', 'CIP2_NAME', 'SOC_2021_2', 'SOC_2021_2_NAME', 'SOC_2021_3', 'SOC_2021_3_NAME', 'SOC_2021_4', 'SOC_2021_4_NAME', 'SOC_2021_5', 'SOC_2021_5_NAME', 'LOT_CAREER_AREA', 'LOT_CAREER_AREA_NAME', 'LOT_OCCUPATION', 'LOT_OCCUPATION_NAME', 'LOT_SPECIALIZED_OCCUPATION', 'LOT_SPECIALIZED_OCCUPATION_NAME', 'LOT_OCCUPATION_GROUP', 'LOT_OCCUPATION_GROUP_NAME', 'LOT_V6_SPECIALIZED_OCCUPATION', 'LOT_V6_SPECIALIZED_OCCUPATION_NAME', 'LOT_V6_OCCUPATION', 'LOT_V6_OCCUPATION_NAME', 'LOT_V6_OCCUPATION_GROUP', 'LOT_V6_OCCUPATION_GROUP_NAME', 'LOT_V6_CAREER_AREA', 'LOT_V6_CAREER_AREA_NAME', 'SOC_2', 'SOC_2_NAME', 'SOC_3', 'SOC_3_NAME', 'SOC_4', 'SOC_4_NAME', 'SOC_5', 'SOC_5_NAME', 'LIGHTCAST_SECTORS', 'LIGHTCAST_SECTORS_NAME', 'NAICS_2022_2', 'NAICS_2022_2_NAME', 'NAICS_2022_3', 'NAICS_2022_3_NAME', 'NAICS_2022_4', 'NAICS_2022_4_NAME', 'NAICS_2022_5', 'NAICS_2022_5_NAME', 'NAICS_2022_6', 'NAICS_2022_6_NAME']"
+  },
+  {
+    "objectID": "index.html#basic-summary-statistics",
+    "href": "index.html#basic-summary-statistics",
+    "title": "Semester_Project",
+    "section": "Basic Summary Statistics",
+    "text": "Basic Summary Statistics\n\ndf.describe()\n\n\n\n\n\n\n\n\nDUPLICATES\nDURATION\nMODELED_DURATION\nCOMPANY\nMIN_EDULEVELS\nMAX_EDULEVELS\nEMPLOYMENT_TYPE\nMIN_YEARS_EXPERIENCE\nMAX_YEARS_EXPERIENCE\nSALARY\n...\nLOT_OCCUPATION_GROUP\nLOT_V6_SPECIALIZED_OCCUPATION\nLOT_V6_OCCUPATION\nLOT_V6_OCCUPATION_GROUP\nLOT_V6_CAREER_AREA\nNAICS_2022_2\nNAICS_2022_3\nNAICS_2022_4\nNAICS_2022_5\nNAICS_2022_6\n\n\n\n\ncount\n72476.000000\n45182.000000\n53208.000000\n7.245400e+04\n72454.000000\n16315.000000\n72454.000000\n49352.000000\n8430.000000\n30808.000000\n...\n72454.000000\n7.245400e+04\n72454.000000\n72454.000000\n72454.000000\n72454.000000\n72454.000000\n72454.000000\n72454.000000\n72454.000000\n\n\nmean\n1.081627\n22.322695\n19.737615\n3.702704e+07\n31.482527\n2.833834\n1.058768\n5.486444\n3.773903\n117953.755031\n...\n2239.204475\n2.239318e+07\n223931.694096\n2239.204475\n22.281158\n58.352555\n587.864590\n5883.121995\n58834.317125\n588345.683937\n\n\nstd\n2.807512\n14.359085\n12.963769\n3.015089e+07\n44.747433\n0.584028\n0.286997\n3.322241\n2.576739\n45133.878359\n...\n285.424309\n2.854275e+06\n28542.747473\n285.424309\n2.854360\n18.626415\n186.259064\n1864.093904\n18642.971892\n186431.744508\n\n\nmin\n0.000000\n0.000000\n0.000000\n0.000000e+00\n0.000000\n1.000000\n1.000000\n0.000000\n0.000000\n15860.000000\n...\n1111.000000\n1.111101e+07\n111110.000000\n1111.000000\n11.000000\n11.000000\n111.000000\n1111.000000\n11115.000000\n111150.000000\n\n\n25%\n0.000000\n11.000000\n10.000000\n6.505993e+06\n2.000000\n3.000000\n1.000000\n3.000000\n2.000000\n84928.500000\n...\n2310.000000\n2.310101e+07\n231010.000000\n2310.000000\n23.000000\n52.000000\n522.000000\n5223.000000\n52232.000000\n522320.000000\n\n\n50%\n0.000000\n18.000000\n16.000000\n3.761516e+07\n2.000000\n3.000000\n1.000000\n5.000000\n3.000000\n116300.000000\n...\n2311.000000\n2.311131e+07\n231113.000000\n2311.000000\n23.000000\n54.000000\n541.000000\n5415.000000\n54151.000000\n541519.000000\n\n\n75%\n1.000000\n32.000000\n28.000000\n4.330689e+07\n99.000000\n3.000000\n1.000000\n8.000000\n5.000000\n145600.000000\n...\n2311.000000\n2.311131e+07\n231113.000000\n2311.000000\n23.000000\n56.000000\n561.000000\n5614.000000\n56149.000000\n561499.000000\n\n\nmax\n100.000000\n59.000000\n59.000000\n1.082365e+08\n99.000000\n4.000000\n3.000000\n15.000000\n14.000000\n500000.000000\n...\n2712.000000\n2.712111e+07\n271211.000000\n2712.000000\n27.000000\n99.000000\n999.000000\n9999.000000\n99999.000000\n999999.000000\n\n\n\n\n8 rows × 38 columns"
   }
 ]

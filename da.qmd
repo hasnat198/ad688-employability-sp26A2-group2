@@ -3,32 +3,32 @@ title: "Data Analysis"
 format: html
 ---
 
-## Load Required Library
+## 1. Load Required Library
 
 ```{python}
 import pandas as pd
 ```
 
-## Read the CSV File
+## 2. Read the CSV File
 
 ```{python}
 df = pd.read_csv("data/lightcast_job_postings.csv", low_memory=False)
 df.head()
 ```
 
-## Check Dataset Shape
+## 3. Check Dataset Shape
 
 ```{python}
 print("Rows and Columns:", df.shape)
 ```
 
-## View Column Names
+## 4. View Column Names
 
 ```{python}
 print(df.columns.tolist())
 ```
 
-## Basic Summary Statistics
+## 5. Basic Summary Statistics
 
 ```{python}
 df.describe()

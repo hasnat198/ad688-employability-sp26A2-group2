@@ -5,4 +5,4 @@ format: html
 
 This is the Semester Project for the course AD688 - Cloud Analytics for Business (Spring 2026).
 
-Topic: Salay & Compensation Disparity across Disciplines
+Topic: Salary & Compensation Disparity across Disciplines

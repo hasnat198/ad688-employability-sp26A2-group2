@@ -159,11 +159,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#load-required-library" id="toc-load-required-library" class="nav-link active" data-scroll-target="#load-required-library">Load Required Library</a></li>
-  <li><a href="#read-the-csv-file" id="toc-read-the-csv-file" class="nav-link" data-scroll-target="#read-the-csv-file">Read the CSV File</a></li>
-  <li><a href="#check-dataset-shape" id="toc-check-dataset-shape" class="nav-link" data-scroll-target="#check-dataset-shape">Check Dataset Shape</a></li>
-  <li><a href="#view-column-names" id="toc-view-column-names" class="nav-link" data-scroll-target="#view-column-names">View Column Names</a></li>
-  <li><a href="#basic-summary-statistics" id="toc-basic-summary-statistics" class="nav-link" data-scroll-target="#basic-summary-statistics">Basic Summary Statistics</a></li>
+  <li><a href="#load-required-library" id="toc-load-required-library" class="nav-link active" data-scroll-target="#load-required-library">1. Load Required Library</a></li>
+  <li><a href="#read-the-csv-file" id="toc-read-the-csv-file" class="nav-link" data-scroll-target="#read-the-csv-file">2. Read the CSV File</a></li>
+  <li><a href="#check-dataset-shape" id="toc-check-dataset-shape" class="nav-link" data-scroll-target="#check-dataset-shape">3. Check Dataset Shape</a></li>
+  <li><a href="#view-column-names" id="toc-view-column-names" class="nav-link" data-scroll-target="#view-column-names">4. View Column Names</a></li>
+  <li><a href="#basic-summary-statistics" id="toc-basic-summary-statistics" class="nav-link" data-scroll-target="#basic-summary-statistics">5. Basic Summary Statistics</a></li>
+  <li><a href="#scatter-plot-salary" id="toc-scatter-plot-salary" class="nav-link" data-scroll-target="#scatter-plot-salary">6. Scatter Plot (Salary)</a></li>
   </ul>
 </nav>
     </div>
@@ -190,14 +191,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="load-required-library" class="level2">
-<h2 class="anchored" data-anchor-id="load-required-library">Load Required Library</h2>
-<div id="e8227116" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<h2 class="anchored" data-anchor-id="load-required-library">1. Load Required Library</h2>
+<div id="452c5d3a" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="read-the-csv-file" class="level2">
-<h2 class="anchored" data-anchor-id="read-the-csv-file">Read the CSV File</h2>
-<div id="b635f062" class="cell" data-execution_count="2">
+<h2 class="anchored" data-anchor-id="read-the-csv-file">2. Read the CSV File</h2>
+<div id="79365bd3" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/lightcast_job_postings.csv"</span>, low_memory<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -361,8 +363,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="check-dataset-shape" class="level2">
-<h2 class="anchored" data-anchor-id="check-dataset-shape">Check Dataset Shape</h2>
-<div id="14724d0a" class="cell" data-execution_count="3">
+<h2 class="anchored" data-anchor-id="check-dataset-shape">3. Check Dataset Shape</h2>
+<div id="1b01c37a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rows and Columns:"</span>, df.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows and Columns: (72498, 131)</code></pre>
@@ -370,8 +372,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="view-column-names" class="level2">
-<h2 class="anchored" data-anchor-id="view-column-names">View Column Names</h2>
-<div id="b9ce16ac" class="cell" data-execution_count="4">
+<h2 class="anchored" data-anchor-id="view-column-names">4. View Column Names</h2>
+<div id="b00ed55d" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns.tolist())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['ID', 'LAST_UPDATED_DATE', 'LAST_UPDATED_TIMESTAMP', 'DUPLICATES', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES', 'SOURCES', 'URL', 'ACTIVE_URLS', 'ACTIVE_SOURCES_INFO', 'TITLE_RAW', 'BODY', 'MODELED_EXPIRED', 'MODELED_DURATION', 'COMPANY', 'COMPANY_NAME', 'COMPANY_RAW', 'COMPANY_IS_STAFFING', 'EDUCATION_LEVELS', 'EDUCATION_LEVELS_NAME', 'MIN_EDULEVELS', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS', 'MAX_EDULEVELS_NAME', 'EMPLOYMENT_TYPE', 'EMPLOYMENT_TYPE_NAME', 'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'IS_INTERNSHIP', 'SALARY', 'REMOTE_TYPE', 'REMOTE_TYPE_NAME', 'ORIGINAL_PAY_PERIOD', 'SALARY_TO', 'SALARY_FROM', 'LOCATION', 'CITY', 'CITY_NAME', 'COUNTY', 'COUNTY_NAME', 'MSA', 'MSA_NAME', 'STATE', 'STATE_NAME', 'COUNTY_OUTGOING', 'COUNTY_NAME_OUTGOING', 'COUNTY_INCOMING', 'COUNTY_NAME_INCOMING', 'MSA_OUTGOING', 'MSA_NAME_OUTGOING', 'MSA_INCOMING', 'MSA_NAME_INCOMING', 'NAICS2', 'NAICS2_NAME', 'NAICS3', 'NAICS3_NAME', 'NAICS4', 'NAICS4_NAME', 'NAICS5', 'NAICS5_NAME', 'NAICS6', 'NAICS6_NAME', 'TITLE', 'TITLE_NAME', 'TITLE_CLEAN', 'SKILLS', 'SKILLS_NAME', 'SPECIALIZED_SKILLS', 'SPECIALIZED_SKILLS_NAME', 'CERTIFICATIONS', 'CERTIFICATIONS_NAME', 'COMMON_SKILLS', 'COMMON_SKILLS_NAME', 'SOFTWARE_SKILLS', 'SOFTWARE_SKILLS_NAME', 'ONET', 'ONET_NAME', 'ONET_2019', 'ONET_2019_NAME', 'CIP6', 'CIP6_NAME', 'CIP4', 'CIP4_NAME', 'CIP2', 'CIP2_NAME', 'SOC_2021_2', 'SOC_2021_2_NAME', 'SOC_2021_3', 'SOC_2021_3_NAME', 'SOC_2021_4', 'SOC_2021_4_NAME', 'SOC_2021_5', 'SOC_2021_5_NAME', 'LOT_CAREER_AREA', 'LOT_CAREER_AREA_NAME', 'LOT_OCCUPATION', 'LOT_OCCUPATION_NAME', 'LOT_SPECIALIZED_OCCUPATION', 'LOT_SPECIALIZED_OCCUPATION_NAME', 'LOT_OCCUPATION_GROUP', 'LOT_OCCUPATION_GROUP_NAME', 'LOT_V6_SPECIALIZED_OCCUPATION', 'LOT_V6_SPECIALIZED_OCCUPATION_NAME', 'LOT_V6_OCCUPATION', 'LOT_V6_OCCUPATION_NAME', 'LOT_V6_OCCUPATION_GROUP', 'LOT_V6_OCCUPATION_GROUP_NAME', 'LOT_V6_CAREER_AREA', 'LOT_V6_CAREER_AREA_NAME', 'SOC_2', 'SOC_2_NAME', 'SOC_3', 'SOC_3_NAME', 'SOC_4', 'SOC_4_NAME', 'SOC_5', 'SOC_5_NAME', 'LIGHTCAST_SECTORS', 'LIGHTCAST_SECTORS_NAME', 'NAICS_2022_2', 'NAICS_2022_2_NAME', 'NAICS_2022_3', 'NAICS_2022_3_NAME', 'NAICS_2022_4', 'NAICS_2022_4_NAME', 'NAICS_2022_5', 'NAICS_2022_5_NAME', 'NAICS_2022_6', 'NAICS_2022_6_NAME']</code></pre>
@@ -379,8 +381,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="basic-summary-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="basic-summary-statistics">Basic Summary Statistics</h2>
-<div id="ea6e4f61" class="cell" data-execution_count="5">
+<h2 class="anchored" data-anchor-id="basic-summary-statistics">5. Basic Summary Statistics</h2>
+<div id="2872b9a8" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
@@ -612,6 +614,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>8 rows × 38 columns</p>
 </div>
 </div>
+</div>
+</section>
+<section id="scatter-plot-salary" class="level2">
+<h2 class="anchored" data-anchor-id="scatter-plot-salary">6. Scatter Plot (Salary)</h2>
+<div id="156b0ef8" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df.plot.scatter(x='ID', y='SALARY')</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 

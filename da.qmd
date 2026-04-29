@@ -8,6 +8,7 @@ format: html
 ```{python}
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 ```
 
 ## 2. Read the CSV File
@@ -35,10 +36,23 @@ print(df.columns.tolist())
 df.describe()
 ```
 
+## 6. Null values
+
+```{python}
+# Calculate count and percentage (multiplied by 100)
+null_summary = pd.concat([df.isnull().sum(), (df.isnull().mean() * 100)],axis=1)
+# Rename columns for clarity
+null_summary.columns = ['null_count', 'null_percentage']
+missing_sorted = null_summary[null_summary['null_count'] > 0].sort_values('null_percentage', ascending=False)
+print(missing_sorted)
+```
+
+
 ## 6. Scatter Plot (Salary)
 
 ```{python}
-df_notnull = df[df['SALARY'].notnull()]
-df_notnull.plot.scatter(x='ID', y='SALARY')
-plt.show()
+#df_notnull = df[df['SALARY'].notnull()]
+#df_notnull.plot.scatter(x='ID', #y='SALARY')
+#plt.show()
+
 ```

@@ -53,14 +53,14 @@
     "href": "da.html",
     "title": "Data Analysis",
     "section": "",
-    "text": "import pandas as pd\nimport matplotlib.pyplot as plt"
+    "text": "import pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns"
   },
   {
     "objectID": "da.html#load-required-library",
     "href": "da.html#load-required-library",
     "title": "Data Analysis",
     "section": "",
-    "text": "import pandas as pd\nimport matplotlib.pyplot as plt"
+    "text": "import pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns"
   },
   {
     "objectID": "da.html#read-the-csv-file",
@@ -95,6 +95,13 @@
     "href": "da.html#scatter-plot-salary",
     "title": "Data Analysis",
     "section": "6. Scatter Plot (Salary)",
-    "text": "6. Scatter Plot (Salary)\n\n#df.plot.scatter(x='ID', y='SALARY')\n#plt.show()"
+    "text": "6. Scatter Plot (Salary)\n\n#df_notnull = df[df['SALARY'].notnull()]\n#df_notnull.plot.scatter(x='ID', #y='SALARY')\n#plt.show()"
+  },
+  {
+    "objectID": "da.html#null-values",
+    "href": "da.html#null-values",
+    "title": "Data Analysis",
+    "section": "6. Null values",
+    "text": "6. Null values\n\n# Calculate count and percentage (multiplied by 100)\nnull_summary = pd.concat([df.isnull().sum(), (df.isnull().mean() * 100)],axis=1)\n# Rename columns for clarity\nnull_summary.columns = ['null_count', 'null_percentage']\nmissing_sorted = null_summary[null_summary['null_count'] &gt; 0].sort_values('null_percentage', ascending=False)\nprint(missing_sorted)\n\n                      null_count  null_percentage\nACTIVE_SOURCES_INFO        64680        89.216254\nMAX_YEARS_EXPERIENCE       64068        88.372093\nMAX_EDULEVELS_NAME         56183        77.495931\nMAX_EDULEVELS              56183        77.495931\nLIGHTCAST_SECTORS          54711        75.465530\n...                          ...              ...\nURL                           22         0.030346\nPOSTED                        22         0.030346\nSOURCE_TYPES                  22         0.030346\nSOURCES                       22         0.030346\nDUPLICATES                    22         0.030346\n\n[131 rows x 2 columns]"
   }
 ]

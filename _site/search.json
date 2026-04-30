@@ -95,7 +95,7 @@
     "href": "da.html#scatter-plot-salary",
     "title": "Data Analysis",
     "section": "6. Scatter Plot (Salary)",
-    "text": "6. Scatter Plot (Salary)\n\n#df_notnull = df[df['SALARY'].notnull()]\n#df_notnull.plot.scatter(x='ID', #y='SALARY')\n#plt.show()"
+    "text": "6. Scatter Plot (Salary)\n\n#df_notnull = df[df['SALARY'].notnull()]\n#df_notnull.plot.scatter(x='ID', #y='SALARY')\n#plt.show()\n\ndf.boxplot(column='SALARY', by='NAICS2_NAME', vert=False)\nplt.show()\n\nsns.boxplot(data=df, x='NAICS2_NAME', y='SALARY')"
   },
   {
     "objectID": "da.html#null-values",
@@ -103,5 +103,19 @@
     "title": "Data Analysis",
     "section": "6. Null values",
     "text": "6. Null values\n\n# Calculate count and percentage (multiplied by 100)\nnull_summary = pd.concat([df.isnull().sum(), (df.isnull().mean() * 100)],axis=1)\n# Rename columns for clarity\nnull_summary.columns = ['null_count', 'null_percentage']\nmissing_sorted = null_summary[null_summary['null_count'] &gt; 0].sort_values('null_percentage', ascending=False)\nprint(missing_sorted)\n\n                      null_count  null_percentage\nACTIVE_SOURCES_INFO        64680        89.216254\nMAX_YEARS_EXPERIENCE       64068        88.372093\nMAX_EDULEVELS_NAME         56183        77.495931\nMAX_EDULEVELS              56183        77.495931\nLIGHTCAST_SECTORS          54711        75.465530\n...                          ...              ...\nURL                           22         0.030346\nPOSTED                        22         0.030346\nSOURCE_TYPES                  22         0.030346\nSOURCES                       22         0.030346\nDUPLICATES                    22         0.030346\n\n[131 rows x 2 columns]"
+  },
+  {
+    "objectID": "da.html#box-plot-salary",
+    "href": "da.html#box-plot-salary",
+    "title": "Data Analysis",
+    "section": "7. Box Plot (Salary)",
+    "text": "7. Box Plot (Salary)\n\ndf.boxplot(column='SALARY', by='NAICS2_NAME', vert=False)\nplt.show()"
+  },
+  {
+    "objectID": "da.html#sector-wise-salary",
+    "href": "da.html#sector-wise-salary",
+    "title": "Data Analysis",
+    "section": "8. Sector Wise Salary",
+    "text": "8. Sector Wise Salary\n\nresult = df.groupby('NAICS2_NAME').agg(\n    max_value=('SALARY', 'max'),\n    min_value=('SALARY', 'min'),\n    avg_value=('SALARY', 'mean')\n)\n\nprint(result)\n\n                                                    max_value  min_value  \\\nNAICS2_NAME                                                                \nAccommodation and Food Services                      338750.0    20800.0   \nAdministrative and Support and Waste Management...   500000.0    27040.0   \nAgriculture, Forestry, Fishing and Hunting           222000.0    52800.0   \nArts, Entertainment, and Recreation                  180000.0    33176.0   \nConstruction                                         194500.0    31387.0   \nEducational Services                                 262250.0    22440.0   \nFinance and Insurance                                311000.0    31200.0   \nHealth Care and Social Assistance                    455375.0    20583.0   \nInformation                                          500000.0    27040.0   \nManagement of Companies and Enterprises              295000.0    49920.0   \nManufacturing                                        319100.0    26520.0   \nMining, Quarrying, and Oil and Gas Extraction        185750.0    49920.0   \nOther Services (except Public Administration)        250000.0    27040.0   \nProfessional, Scientific, and Technical Services     312500.0    23585.0   \nPublic Administration                                253150.0    31150.0   \nReal Estate and Rental and Leasing                   260000.0    28080.0   \nRetail Trade                                         437500.0    21237.0   \nTransportation and Warehousing                       195000.0    27300.0   \nUnclassified Industry                                372500.0    15860.0   \nUtilities                                            234000.0    39020.0   \nWholesale Trade                                      350000.0    31200.0   \n\n                                                        avg_value  \nNAICS2_NAME                                                        \nAccommodation and Food Services                     145674.501916  \nAdministrative and Support and Waste Management...  102942.477296  \nAgriculture, Forestry, Fishing and Hunting           98591.857143  \nArts, Entertainment, and Recreation                  91034.790698  \nConstruction                                        115134.348592  \nEducational Services                                 80573.968880  \nFinance and Insurance                               119858.851290  \nHealth Care and Social Assistance                   101279.119280  \nInformation                                         140118.732695  \nManagement of Companies and Enterprises             107347.150000  \nManufacturing                                       122408.817088  \nMining, Quarrying, and Oil and Gas Extraction       103722.861111  \nOther Services (except Public Administration)        91423.899441  \nProfessional, Scientific, and Technical Services    132601.547266  \nPublic Administration                                83252.967190  \nReal Estate and Rental and Leasing                   91487.537757  \nRetail Trade                                        124757.096859  \nTransportation and Warehousing                      100463.898678  \nUnclassified Industry                               108802.251995  \nUtilities                                           118188.440252  \nWholesale Trade                                     110030.412162"
   }
 ]

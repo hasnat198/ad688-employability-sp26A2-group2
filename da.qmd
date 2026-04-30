@@ -48,11 +48,26 @@ print(missing_sorted)
 ```
 
 
-## 6. Scatter Plot (Salary)
+## 7. Box Plot (Salary)
 
 ```{python}
-#df_notnull = df[df['SALARY'].notnull()]
-#df_notnull.plot.scatter(x='ID', #y='SALARY')
-#plt.show()
+
+df.boxplot(column='SALARY', by='NAICS2_NAME', vert=False)
+plt.show()
 
 ```
+
+## 8. Sector Wise Salary
+
+```{python}
+
+result = df.groupby('NAICS2_NAME').agg(
+    max_value=('SALARY', 'max'),
+    min_value=('SALARY', 'min'),
+    avg_value=('SALARY', 'mean')
+)
+
+print(result)
+
+```
+

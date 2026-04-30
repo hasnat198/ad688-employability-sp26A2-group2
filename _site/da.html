@@ -165,7 +165,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#view-column-names" id="toc-view-column-names" class="nav-link" data-scroll-target="#view-column-names">4. View Column Names</a></li>
   <li><a href="#basic-summary-statistics" id="toc-basic-summary-statistics" class="nav-link" data-scroll-target="#basic-summary-statistics">5. Basic Summary Statistics</a></li>
   <li><a href="#null-values" id="toc-null-values" class="nav-link" data-scroll-target="#null-values">6. Null values</a></li>
-  <li><a href="#scatter-plot-salary" id="toc-scatter-plot-salary" class="nav-link" data-scroll-target="#scatter-plot-salary">6. Scatter Plot (Salary)</a></li>
+  <li><a href="#box-plot-salary" id="toc-box-plot-salary" class="nav-link" data-scroll-target="#box-plot-salary">7. Box Plot (Salary)</a></li>
+  <li><a href="#sector-wise-salary" id="toc-sector-wise-salary" class="nav-link" data-scroll-target="#sector-wise-salary">8. Sector Wise Salary</a></li>
   </ul>
 </nav>
     </div>
@@ -193,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="load-required-library" class="level2">
 <h2 class="anchored" data-anchor-id="load-required-library">1. Load Required Library</h2>
-<div id="fc3ec742" class="cell" data-execution_count="1">
+<div id="904113b1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -201,10 +202,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="read-the-csv-file" class="level2">
 <h2 class="anchored" data-anchor-id="read-the-csv-file">2. Read the CSV File</h2>
-<div id="0a6c8400" class="cell" data-execution_count="2">
+<div id="ae6dae2d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/lightcast_job_postings.csv"</span>, low_memory<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -366,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="check-dataset-shape" class="level2">
 <h2 class="anchored" data-anchor-id="check-dataset-shape">3. Check Dataset Shape</h2>
-<div id="9fa035cf" class="cell" data-execution_count="3">
+<div id="b9934a5a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rows and Columns:"</span>, df.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows and Columns: (72498, 131)</code></pre>
@@ -375,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="view-column-names" class="level2">
 <h2 class="anchored" data-anchor-id="view-column-names">4. View Column Names</h2>
-<div id="cc56dd26" class="cell" data-execution_count="4">
+<div id="5e13f295" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns.tolist())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['ID', 'LAST_UPDATED_DATE', 'LAST_UPDATED_TIMESTAMP', 'DUPLICATES', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES', 'SOURCES', 'URL', 'ACTIVE_URLS', 'ACTIVE_SOURCES_INFO', 'TITLE_RAW', 'BODY', 'MODELED_EXPIRED', 'MODELED_DURATION', 'COMPANY', 'COMPANY_NAME', 'COMPANY_RAW', 'COMPANY_IS_STAFFING', 'EDUCATION_LEVELS', 'EDUCATION_LEVELS_NAME', 'MIN_EDULEVELS', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS', 'MAX_EDULEVELS_NAME', 'EMPLOYMENT_TYPE', 'EMPLOYMENT_TYPE_NAME', 'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'IS_INTERNSHIP', 'SALARY', 'REMOTE_TYPE', 'REMOTE_TYPE_NAME', 'ORIGINAL_PAY_PERIOD', 'SALARY_TO', 'SALARY_FROM', 'LOCATION', 'CITY', 'CITY_NAME', 'COUNTY', 'COUNTY_NAME', 'MSA', 'MSA_NAME', 'STATE', 'STATE_NAME', 'COUNTY_OUTGOING', 'COUNTY_NAME_OUTGOING', 'COUNTY_INCOMING', 'COUNTY_NAME_INCOMING', 'MSA_OUTGOING', 'MSA_NAME_OUTGOING', 'MSA_INCOMING', 'MSA_NAME_INCOMING', 'NAICS2', 'NAICS2_NAME', 'NAICS3', 'NAICS3_NAME', 'NAICS4', 'NAICS4_NAME', 'NAICS5', 'NAICS5_NAME', 'NAICS6', 'NAICS6_NAME', 'TITLE', 'TITLE_NAME', 'TITLE_CLEAN', 'SKILLS', 'SKILLS_NAME', 'SPECIALIZED_SKILLS', 'SPECIALIZED_SKILLS_NAME', 'CERTIFICATIONS', 'CERTIFICATIONS_NAME', 'COMMON_SKILLS', 'COMMON_SKILLS_NAME', 'SOFTWARE_SKILLS', 'SOFTWARE_SKILLS_NAME', 'ONET', 'ONET_NAME', 'ONET_2019', 'ONET_2019_NAME', 'CIP6', 'CIP6_NAME', 'CIP4', 'CIP4_NAME', 'CIP2', 'CIP2_NAME', 'SOC_2021_2', 'SOC_2021_2_NAME', 'SOC_2021_3', 'SOC_2021_3_NAME', 'SOC_2021_4', 'SOC_2021_4_NAME', 'SOC_2021_5', 'SOC_2021_5_NAME', 'LOT_CAREER_AREA', 'LOT_CAREER_AREA_NAME', 'LOT_OCCUPATION', 'LOT_OCCUPATION_NAME', 'LOT_SPECIALIZED_OCCUPATION', 'LOT_SPECIALIZED_OCCUPATION_NAME', 'LOT_OCCUPATION_GROUP', 'LOT_OCCUPATION_GROUP_NAME', 'LOT_V6_SPECIALIZED_OCCUPATION', 'LOT_V6_SPECIALIZED_OCCUPATION_NAME', 'LOT_V6_OCCUPATION', 'LOT_V6_OCCUPATION_NAME', 'LOT_V6_OCCUPATION_GROUP', 'LOT_V6_OCCUPATION_GROUP_NAME', 'LOT_V6_CAREER_AREA', 'LOT_V6_CAREER_AREA_NAME', 'SOC_2', 'SOC_2_NAME', 'SOC_3', 'SOC_3_NAME', 'SOC_4', 'SOC_4_NAME', 'SOC_5', 'SOC_5_NAME', 'LIGHTCAST_SECTORS', 'LIGHTCAST_SECTORS_NAME', 'NAICS_2022_2', 'NAICS_2022_2_NAME', 'NAICS_2022_3', 'NAICS_2022_3_NAME', 'NAICS_2022_4', 'NAICS_2022_4_NAME', 'NAICS_2022_5', 'NAICS_2022_5_NAME', 'NAICS_2022_6', 'NAICS_2022_6_NAME']</code></pre>
@@ -384,9 +385,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="basic-summary-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="basic-summary-statistics">5. Basic Summary Statistics</h2>
-<div id="c6acd979" class="cell" data-execution_count="5">
+<div id="6748cf8b" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
@@ -620,7 +621,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="null-values" class="level2">
 <h2 class="anchored" data-anchor-id="null-values">6. Null values</h2>
-<div id="73216743" class="cell" data-execution_count="6">
+<div id="e653eb5c" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate count and percentage (multiplied by 100)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>null_summary <span class="op">=</span> pd.concat([df.isnull().<span class="bu">sum</span>(), (df.isnull().mean() <span class="op">*</span> <span class="dv">100</span>)],axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns for clarity</span></span>
@@ -645,12 +646,79 @@ DUPLICATES                    22         0.030346
 </div>
 </div>
 </section>
-<section id="scatter-plot-salary" class="level2">
-<h2 class="anchored" data-anchor-id="scatter-plot-salary">6. Scatter Plot (Salary)</h2>
-<div id="fad04d6a" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df_notnull = df[df['SALARY'].notnull()]</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#df_notnull.plot.scatter(x='ID', #y='SALARY')</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="box-plot-salary" class="level2">
+<h2 class="anchored" data-anchor-id="box-plot-salary">7. Box Plot (Salary)</h2>
+<div id="4b8839d2" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.boxplot(column<span class="op">=</span><span class="st">'SALARY'</span>, by<span class="op">=</span><span class="st">'NAICS2_NAME'</span>, vert<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="da_files/figure-html/cell-8-output-1.png" width="1112" height="440" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sector-wise-salary" class="level2">
+<h2 class="anchored" data-anchor-id="sector-wise-salary">8. Sector Wise Salary</h2>
+<div id="52638dd6" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> df.groupby(<span class="st">'NAICS2_NAME'</span>).agg(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    max_value<span class="op">=</span>(<span class="st">'SALARY'</span>, <span class="st">'max'</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    min_value<span class="op">=</span>(<span class="st">'SALARY'</span>, <span class="st">'min'</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    avg_value<span class="op">=</span>(<span class="st">'SALARY'</span>, <span class="st">'mean'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                    max_value  min_value  \
+NAICS2_NAME                                                                
+Accommodation and Food Services                      338750.0    20800.0   
+Administrative and Support and Waste Management...   500000.0    27040.0   
+Agriculture, Forestry, Fishing and Hunting           222000.0    52800.0   
+Arts, Entertainment, and Recreation                  180000.0    33176.0   
+Construction                                         194500.0    31387.0   
+Educational Services                                 262250.0    22440.0   
+Finance and Insurance                                311000.0    31200.0   
+Health Care and Social Assistance                    455375.0    20583.0   
+Information                                          500000.0    27040.0   
+Management of Companies and Enterprises              295000.0    49920.0   
+Manufacturing                                        319100.0    26520.0   
+Mining, Quarrying, and Oil and Gas Extraction        185750.0    49920.0   
+Other Services (except Public Administration)        250000.0    27040.0   
+Professional, Scientific, and Technical Services     312500.0    23585.0   
+Public Administration                                253150.0    31150.0   
+Real Estate and Rental and Leasing                   260000.0    28080.0   
+Retail Trade                                         437500.0    21237.0   
+Transportation and Warehousing                       195000.0    27300.0   
+Unclassified Industry                                372500.0    15860.0   
+Utilities                                            234000.0    39020.0   
+Wholesale Trade                                      350000.0    31200.0   
+
+                                                        avg_value  
+NAICS2_NAME                                                        
+Accommodation and Food Services                     145674.501916  
+Administrative and Support and Waste Management...  102942.477296  
+Agriculture, Forestry, Fishing and Hunting           98591.857143  
+Arts, Entertainment, and Recreation                  91034.790698  
+Construction                                        115134.348592  
+Educational Services                                 80573.968880  
+Finance and Insurance                               119858.851290  
+Health Care and Social Assistance                   101279.119280  
+Information                                         140118.732695  
+Management of Companies and Enterprises             107347.150000  
+Manufacturing                                       122408.817088  
+Mining, Quarrying, and Oil and Gas Extraction       103722.861111  
+Other Services (except Public Administration)        91423.899441  
+Professional, Scientific, and Technical Services    132601.547266  
+Public Administration                                83252.967190  
+Real Estate and Rental and Leasing                   91487.537757  
+Retail Trade                                        124757.096859  
+Transportation and Warehousing                      100463.898678  
+Unclassified Industry                               108802.251995  
+Utilities                                           118188.440252  
+Wholesale Trade                                     110030.412162  </code></pre>
+</div>
 </div>
 
 

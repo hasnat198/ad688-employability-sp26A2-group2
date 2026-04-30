@@ -6,3 +6,61 @@ format: html
 This is the Semester Project for the course AD688 - Cloud Analytics for Business (Spring 2026).
 
 Topic: Salary & Compensation Disparity across Disciplines
+
+
+
+# Introduction
+
+This report analyzes salary disparities across disciplines using Lightcast job postings data. The goal is to understand how salaries vary between AI and non-AI careers, across regions, and by job type (remote vs in-office). The study also explores skill demand and provides career recommendations.
+
+---
+
+# Market Trends
+
+## AI vs Non-AI Salaries
+
+AI-related roles show significantly higher salaries compared to non-AI roles. This is driven by high demand and limited supply of specialized talent.
+
+## Regional Differences
+
+States such as California, Washington, and New York offer the highest salaries, particularly in technology roles.
+
+## Remote vs In-Office
+
+Remote jobs tend to offer competitive or higher salaries, especially in AI-related fields.
+
+## Industry Trends
+
+Industries such as Information, Finance, and Professional Services show the highest average salaries.
+
+---
+
+# Skill Analysis
+
+The most in-demand skills include:
+
+- Python
+- SQL
+- Machine Learning
+- Cloud Computing (AWS, Azure)
+
+There is a clear skill gap in advanced AI capabilities, indicating strong opportunities for skilled professionals.
+
+---
+
+# Career Strategy Recommendations
+
+## Short-Term
+- Learn Python, SQL, and data analysis tools
+
+## Mid-Term
+- Gain experience in machine learning and cloud platforms
+
+## Long-Term
+- Specialize in AI domains such as NLP or Deep Learning
+
+---
+
+# Conclusion
+
+Salary disparities highlight the growing importance of AI-related skills in the labor market. Professionals who invest in high-demand technical skills can access significantly higher-paying opportunities and long-term career growth.

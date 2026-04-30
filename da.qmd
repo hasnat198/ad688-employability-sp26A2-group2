@@ -71,3 +71,113 @@ print(result)
 
 ```
 
+## 9. Clean Data
+
+```{python}
+
+
+df_salary = df.copy()
+
+df_salary = df_salary[
+    (df_salary['SALARY_FROM'].notna()) &
+    (df_salary['SALARY_TO'].notna())
+]
+
+df_salary['avg_salary'] = (
+    df_salary['SALARY_FROM'] + df_salary['SALARY_TO']
+) / 2
+
+```
+
+## 10. AI vs Non AI
+
+```{python}
+
+ai_keywords = ['data scientist', 'machine learning', 'ai', 'artificial intelligence', 'nlp']
+
+df_salary['is_ai'] = df_salary['TITLE_NAME'].str.lower().apply(
+    lambda x: any(keyword in str(x) for keyword in ai_keywords)
+)
+
+ai_vs_nonai = df_salary.groupby('is_ai')['avg_salary'].mean()
+print(ai_vs_nonai)
+
+```
+
+## 11. AI vs Non AI-Plot
+
+```{python}
+
+ai_vs_nonai.plot(kind='bar')
+plt.title('AI vs Non-AI Salary Comparison')
+plt.ylabel('Average Salary')
+plt.xticks([0,1], ['Non-AI', 'AI'], rotation=0)
+plt.show()
+
+```
+
+## 12. Region Wise - Salary
+
+```{python}
+
+region_salary = df_salary.groupby('STATE_NAME')['avg_salary'].mean().sort_values(ascending=False)
+
+print(region_salary.head(10))
+
+```
+
+## 13. Region Wise - Salary Plot
+
+```{python}
+
+region_salary.head(10).plot(kind='bar')
+plt.title('Top 10 States by Salary')
+plt.ylabel('Average Salary')
+plt.xticks(rotation=45)
+plt.show()
+
+```
+
+## 14. Remote VS Onsite
+
+```{python}
+
+remote_salary = df_salary.groupby('REMOTE_TYPE_NAME')['avg_salary'].mean()
+print(remote_salary)
+
+```
+
+## 15. Remote VS Onsite - Plot
+
+```{python}
+
+remote_salary.plot(kind='bar')
+plt.title('Remote vs Onsite Salary')
+plt.ylabel('Average Salary')
+plt.xticks(rotation=45)
+plt.show()
+
+```
+
+## 16. Skills
+
+```{python}
+
+from collections import Counter
+
+skills_series = df['SKILLS_NAME'].dropna().str.split(';')
+all_skills = [skill.strip() for sublist in skills_series for skill in sublist]
+
+skill_counts = Counter(all_skills)
+
+top_skills = pd.DataFrame(skill_counts.most_common(7), columns=['Skill', 'Count'])
+print(top_skills)
+
+top_skills.set_index('Skill').plot(kind='bar')
+plt.title('Top In-Demand Skills')
+plt.ylabel('Frequency')
+plt.xticks(rotation=90)
+plt.show()
+
+```
+

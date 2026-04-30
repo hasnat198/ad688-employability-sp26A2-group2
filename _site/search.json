@@ -117,5 +117,117 @@
     "title": "Data Analysis",
     "section": "8. Sector Wise Salary",
     "text": "8. Sector Wise Salary\n\nresult = df.groupby('NAICS2_NAME').agg(\n    max_value=('SALARY', 'max'),\n    min_value=('SALARY', 'min'),\n    avg_value=('SALARY', 'mean')\n)\n\nprint(result)\n\n                                                    max_value  min_value  \\\nNAICS2_NAME                                                                \nAccommodation and Food Services                      338750.0    20800.0   \nAdministrative and Support and Waste Management...   500000.0    27040.0   \nAgriculture, Forestry, Fishing and Hunting           222000.0    52800.0   \nArts, Entertainment, and Recreation                  180000.0    33176.0   \nConstruction                                         194500.0    31387.0   \nEducational Services                                 262250.0    22440.0   \nFinance and Insurance                                311000.0    31200.0   \nHealth Care and Social Assistance                    455375.0    20583.0   \nInformation                                          500000.0    27040.0   \nManagement of Companies and Enterprises              295000.0    49920.0   \nManufacturing                                        319100.0    26520.0   \nMining, Quarrying, and Oil and Gas Extraction        185750.0    49920.0   \nOther Services (except Public Administration)        250000.0    27040.0   \nProfessional, Scientific, and Technical Services     312500.0    23585.0   \nPublic Administration                                253150.0    31150.0   \nReal Estate and Rental and Leasing                   260000.0    28080.0   \nRetail Trade                                         437500.0    21237.0   \nTransportation and Warehousing                       195000.0    27300.0   \nUnclassified Industry                                372500.0    15860.0   \nUtilities                                            234000.0    39020.0   \nWholesale Trade                                      350000.0    31200.0   \n\n                                                        avg_value  \nNAICS2_NAME                                                        \nAccommodation and Food Services                     145674.501916  \nAdministrative and Support and Waste Management...  102942.477296  \nAgriculture, Forestry, Fishing and Hunting           98591.857143  \nArts, Entertainment, and Recreation                  91034.790698  \nConstruction                                        115134.348592  \nEducational Services                                 80573.968880  \nFinance and Insurance                               119858.851290  \nHealth Care and Social Assistance                   101279.119280  \nInformation                                         140118.732695  \nManagement of Companies and Enterprises             107347.150000  \nManufacturing                                       122408.817088  \nMining, Quarrying, and Oil and Gas Extraction       103722.861111  \nOther Services (except Public Administration)        91423.899441  \nProfessional, Scientific, and Technical Services    132601.547266  \nPublic Administration                                83252.967190  \nReal Estate and Rental and Leasing                   91487.537757  \nRetail Trade                                        124757.096859  \nTransportation and Warehousing                      100463.898678  \nUnclassified Industry                               108802.251995  \nUtilities                                           118188.440252  \nWholesale Trade                                     110030.412162"
+  },
+  {
+    "objectID": "index.html#ai-vs-non-ai-salaries",
+    "href": "index.html#ai-vs-non-ai-salaries",
+    "title": "Semester_Project",
+    "section": "AI vs Non-AI Salaries",
+    "text": "AI vs Non-AI Salaries\nAI-related roles show significantly higher salaries compared to non-AI roles. This is driven by high demand and limited supply of specialized talent."
+  },
+  {
+    "objectID": "index.html#regional-differences",
+    "href": "index.html#regional-differences",
+    "title": "Semester_Project",
+    "section": "Regional Differences",
+    "text": "Regional Differences\nStates such as California, Washington, and New York offer the highest salaries, particularly in technology roles."
+  },
+  {
+    "objectID": "index.html#remote-vs-in-office",
+    "href": "index.html#remote-vs-in-office",
+    "title": "Semester_Project",
+    "section": "Remote vs In-Office",
+    "text": "Remote vs In-Office\nRemote jobs tend to offer competitive or higher salaries, especially in AI-related fields."
+  },
+  {
+    "objectID": "index.html#industry-trends",
+    "href": "index.html#industry-trends",
+    "title": "Semester_Project",
+    "section": "Industry Trends",
+    "text": "Industry Trends\nIndustries such as Information, Finance, and Professional Services show the highest average salaries."
+  },
+  {
+    "objectID": "index.html#short-term",
+    "href": "index.html#short-term",
+    "title": "Semester_Project",
+    "section": "Short-Term",
+    "text": "Short-Term\n\nLearn Python, SQL, and data analysis tools"
+  },
+  {
+    "objectID": "index.html#mid-term",
+    "href": "index.html#mid-term",
+    "title": "Semester_Project",
+    "section": "Mid-Term",
+    "text": "Mid-Term\n\nGain experience in machine learning and cloud platforms"
+  },
+  {
+    "objectID": "index.html#long-term",
+    "href": "index.html#long-term",
+    "title": "Semester_Project",
+    "section": "Long-Term",
+    "text": "Long-Term\n\nSpecialize in AI domains such as NLP or Deep Learning"
+  },
+  {
+    "objectID": "da.html#clean-data",
+    "href": "da.html#clean-data",
+    "title": "Data Analysis",
+    "section": "9. Clean Data",
+    "text": "9. Clean Data\n\ndf_salary = df.copy()\n\ndf_salary = df_salary[\n    (df_salary['SALARY_FROM'].notna()) &\n    (df_salary['SALARY_TO'].notna())\n]\n\ndf_salary['avg_salary'] = (\n    df_salary['SALARY_FROM'] + df_salary['SALARY_TO']\n) / 2"
+  },
+  {
+    "objectID": "da.html#ai-vs-non-ai",
+    "href": "da.html#ai-vs-non-ai",
+    "title": "Data Analysis",
+    "section": "10. AI vs Non AI",
+    "text": "10. AI vs Non AI\n\nai_keywords = ['data scientist', 'machine learning', 'ai', 'artificial intelligence', 'nlp']\n\ndf_salary['is_ai'] = df_salary['TITLE_NAME'].str.lower().apply(\n    lambda x: any(keyword in str(x) for keyword in ai_keywords)\n)\n\nai_vs_nonai = df_salary.groupby('is_ai')['avg_salary'].mean()\nprint(ai_vs_nonai)\n\nis_ai\nFalse    114982.178802\nTrue     119120.349917\nName: avg_salary, dtype: float64"
+  },
+  {
+    "objectID": "da.html#ai-vs-non-ai-1",
+    "href": "da.html#ai-vs-non-ai-1",
+    "title": "Data Analysis",
+    "section": "11. AI vs Non AI",
+    "text": "11. AI vs Non AI\n\nimport matplotlib.pyplot as plt\n\nai_vs_nonai.plot(kind='bar')\nplt.title('AI vs Non-AI Salary Comparison')\nplt.ylabel('Average Salary')\nplt.xticks([0,1], ['Non-AI', 'AI'], rotation=0)\nplt.show()"
+  },
+  {
+    "objectID": "da.html#ai-vs-non-ai-plot",
+    "href": "da.html#ai-vs-non-ai-plot",
+    "title": "Data Analysis",
+    "section": "11. AI vs Non AI-Plot",
+    "text": "11. AI vs Non AI-Plot\n\nai_vs_nonai.plot(kind='bar')\nplt.title('AI vs Non-AI Salary Comparison')\nplt.ylabel('Average Salary')\nplt.xticks([0,1], ['Non-AI', 'AI'], rotation=0)\nplt.show()"
+  },
+  {
+    "objectID": "da.html#region-wise---salary",
+    "href": "da.html#region-wise---salary",
+    "title": "Data Analysis",
+    "section": "12. Region Wise - Salary",
+    "text": "12. Region Wise - Salary\n\nregion_salary = df_salary.groupby('STATE_NAME')['avg_salary'].mean().sort_values(ascending=False)\n\nprint(region_salary.head(10))\n\nSTATE_NAME\nConnecticut                                124878.200466\nNew Jersey                                 122861.899888\nArkansas                                   122166.234076\nVermont                                    121737.644860\nVirginia                                   121207.365425\nCalifornia                                 120828.784724\nMontana                                    120698.048246\nIllinois                                   120415.422669\nWashington                                 119686.824056\nWashington, D.C. (District of Columbia)    118605.085859\nName: avg_salary, dtype: float64"
+  },
+  {
+    "objectID": "da.html#region-wise---salary-plot",
+    "href": "da.html#region-wise---salary-plot",
+    "title": "Data Analysis",
+    "section": "13. Region Wise - Salary Plot",
+    "text": "13. Region Wise - Salary Plot\n\nregion_salary.head(10).plot(kind='bar')\nplt.title('Top 10 States by Salary')\nplt.ylabel('Average Salary')\nplt.xticks(rotation=45)\nplt.show()"
+  },
+  {
+    "objectID": "da.html#remote-vs-onsite",
+    "href": "da.html#remote-vs-onsite",
+    "title": "Data Analysis",
+    "section": "14. Remote VS Onsite",
+    "text": "14. Remote VS Onsite\n\nremote_salary = df_salary.groupby('REMOTE_TYPE_NAME')['avg_salary'].mean()\nprint(remote_salary)\n\nREMOTE_TYPE_NAME\nHybrid Remote    114107.098782\nNot Remote       100698.898251\nRemote           116455.761715\n[None]           115079.057876\nName: avg_salary, dtype: float64"
+  },
+  {
+    "objectID": "da.html#remote-vs-onsite---plot",
+    "href": "da.html#remote-vs-onsite---plot",
+    "title": "Data Analysis",
+    "section": "15. Remote VS Onsite - Plot",
+    "text": "15. Remote VS Onsite - Plot\n\nremote_salary.plot(kind='bar')\nplt.title('Remote vs Onsite Salary')\nplt.ylabel('Average Salary')\nplt.xticks(rotation=45)\nplt.show()"
+  },
+  {
+    "objectID": "da.html#skills",
+    "href": "da.html#skills",
+    "title": "Data Analysis",
+    "section": "16. Skills",
+    "text": "16. Skills\n\nfrom collections import Counter\n\nskills_series = df['SKILLS_NAME'].dropna().str.split(';')\nall_skills = [skill.strip() for sublist in skills_series for skill in sublist]\n\nskill_counts = Counter(all_skills)\n\ntop_skills = pd.DataFrame(skill_counts.most_common(7), columns=['Skill', 'Count'])\nprint(top_skills)\n\ntop_skills.set_index('Skill').plot(kind='bar')\nplt.title('Top In-Demand Skills')\nplt.ylabel('Frequency')\nplt.xticks(rotation=90)\nplt.show()\n\n                                               Skill  Count\n0                                                 []    523\n1  [\\n  \"User Experience (UX) Design\",\\n  \"Projec...    376\n2  [\\n  \"Cloud Computing\",\\n  \"Enterprise Resourc...    279\n3  [\\n  \"Pivot Tables And Charts\",\\n  \"Business O...    270\n4                            [\\n  \"Data Analysis\"\\n]    152\n5  [\\n  \"Management\",\\n  \"Microsoft Access\",\\n  \"...    112\n6  [\\n  \"Customer Service\",\\n  \"Emergency Respons...    110"
   }
 ]

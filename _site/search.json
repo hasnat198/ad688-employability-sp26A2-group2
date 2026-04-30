@@ -229,5 +229,12 @@
     "title": "Data Analysis",
     "section": "16. Skills",
     "text": "16. Skills\n\nfrom collections import Counter\n\nskills_series = df['SKILLS_NAME'].dropna().str.split(';')\nall_skills = [skill.strip() for sublist in skills_series for skill in sublist]\n\nskill_counts = Counter(all_skills)\n\ntop_skills = pd.DataFrame(skill_counts.most_common(7), columns=['Skill', 'Count'])\nprint(top_skills)\n\ntop_skills.set_index('Skill').plot(kind='bar')\nplt.title('Top In-Demand Skills')\nplt.ylabel('Frequency')\nplt.xticks(rotation=90)\nplt.show()\n\n                                               Skill  Count\n0                                                 []    523\n1  [\\n  \"User Experience (UX) Design\",\\n  \"Projec...    376\n2  [\\n  \"Cloud Computing\",\\n  \"Enterprise Resourc...    279\n3  [\\n  \"Pivot Tables And Charts\",\\n  \"Business O...    270\n4                            [\\n  \"Data Analysis\"\\n]    152\n5  [\\n  \"Management\",\\n  \"Microsoft Access\",\\n  \"...    112\n6  [\\n  \"Customer Service\",\\n  \"Emergency Respons...    110"
+  },
+  {
+    "objectID": "da.html#software",
+    "href": "da.html#software",
+    "title": "Data Analysis",
+    "section": "17. Software",
+    "text": "17. Software\n\nimport re\n\npattern = r'(\\.NET|\\bJava\\b|\\bPython\\b|\\bSQL\\b)'\n\n# 2. Extract, fill missing with 'Others', and clean up casing\ndf_salary['SOFT_SKILL'] = (\n    df_salary['SOFTWARE_SKILLS_NAME']\n    .str.extract(pattern, flags=re.IGNORECASE, expand=False)\n    .fillna('Others')\n)\n\n# 3. Aggregate and sort for a better visual\nsoft_skill = df_salary.groupby('SOFT_SKILL')['avg_salary'].mean().sort_values(ascending=False)\n\n# 4. Plot\nprint(soft_skill)\nsoft_skill.plot(kind='bar', color='teal')\nplt.title('Average Salary by Software Skill')\nplt.ylabel('Average Salary')\nplt.xlabel('Software Skill')\nplt.xticks(rotation=45)\nplt.tight_layout()\nplt.show()\n\nSOFT_SKILL\nJava      137196.448310\nSql       123800.047170\n.NET      121329.456522\nOthers    117569.947449\nPython    116640.797641\nSQL       103836.184206\nName: avg_salary, dtype: float64"
   }
 ]

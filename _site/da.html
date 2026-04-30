@@ -175,6 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#remote-vs-onsite" id="toc-remote-vs-onsite" class="nav-link" data-scroll-target="#remote-vs-onsite">14. Remote VS Onsite</a></li>
   <li><a href="#remote-vs-onsite---plot" id="toc-remote-vs-onsite---plot" class="nav-link" data-scroll-target="#remote-vs-onsite---plot">15. Remote VS Onsite - Plot</a></li>
   <li><a href="#skills" id="toc-skills" class="nav-link" data-scroll-target="#skills">16. Skills</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">17. Software</a></li>
   </ul>
 </nav>
     </div>
@@ -202,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="load-required-library" class="level2">
 <h2 class="anchored" data-anchor-id="load-required-library">1. Load Required Library</h2>
-<div id="fde51aa2" class="cell" data-execution_count="1">
+<div id="f141a4c2" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -210,10 +211,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="read-the-csv-file" class="level2">
 <h2 class="anchored" data-anchor-id="read-the-csv-file">2. Read the CSV File</h2>
-<div id="fc72a959" class="cell" data-execution_count="2">
+<div id="d8c177a7" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/lightcast_job_postings.csv"</span>, low_memory<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="86">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 
 
@@ -375,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="check-dataset-shape" class="level2">
 <h2 class="anchored" data-anchor-id="check-dataset-shape">3. Check Dataset Shape</h2>
-<div id="7bd54f73" class="cell" data-execution_count="3">
+<div id="36a9549a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rows and Columns:"</span>, df.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows and Columns: (72498, 131)</code></pre>
@@ -384,7 +385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="view-column-names" class="level2">
 <h2 class="anchored" data-anchor-id="view-column-names">4. View Column Names</h2>
-<div id="baa76bb5" class="cell" data-execution_count="4">
+<div id="4733e1ec" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns.tolist())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['ID', 'LAST_UPDATED_DATE', 'LAST_UPDATED_TIMESTAMP', 'DUPLICATES', 'POSTED', 'EXPIRED', 'DURATION', 'SOURCE_TYPES', 'SOURCES', 'URL', 'ACTIVE_URLS', 'ACTIVE_SOURCES_INFO', 'TITLE_RAW', 'BODY', 'MODELED_EXPIRED', 'MODELED_DURATION', 'COMPANY', 'COMPANY_NAME', 'COMPANY_RAW', 'COMPANY_IS_STAFFING', 'EDUCATION_LEVELS', 'EDUCATION_LEVELS_NAME', 'MIN_EDULEVELS', 'MIN_EDULEVELS_NAME', 'MAX_EDULEVELS', 'MAX_EDULEVELS_NAME', 'EMPLOYMENT_TYPE', 'EMPLOYMENT_TYPE_NAME', 'MIN_YEARS_EXPERIENCE', 'MAX_YEARS_EXPERIENCE', 'IS_INTERNSHIP', 'SALARY', 'REMOTE_TYPE', 'REMOTE_TYPE_NAME', 'ORIGINAL_PAY_PERIOD', 'SALARY_TO', 'SALARY_FROM', 'LOCATION', 'CITY', 'CITY_NAME', 'COUNTY', 'COUNTY_NAME', 'MSA', 'MSA_NAME', 'STATE', 'STATE_NAME', 'COUNTY_OUTGOING', 'COUNTY_NAME_OUTGOING', 'COUNTY_INCOMING', 'COUNTY_NAME_INCOMING', 'MSA_OUTGOING', 'MSA_NAME_OUTGOING', 'MSA_INCOMING', 'MSA_NAME_INCOMING', 'NAICS2', 'NAICS2_NAME', 'NAICS3', 'NAICS3_NAME', 'NAICS4', 'NAICS4_NAME', 'NAICS5', 'NAICS5_NAME', 'NAICS6', 'NAICS6_NAME', 'TITLE', 'TITLE_NAME', 'TITLE_CLEAN', 'SKILLS', 'SKILLS_NAME', 'SPECIALIZED_SKILLS', 'SPECIALIZED_SKILLS_NAME', 'CERTIFICATIONS', 'CERTIFICATIONS_NAME', 'COMMON_SKILLS', 'COMMON_SKILLS_NAME', 'SOFTWARE_SKILLS', 'SOFTWARE_SKILLS_NAME', 'ONET', 'ONET_NAME', 'ONET_2019', 'ONET_2019_NAME', 'CIP6', 'CIP6_NAME', 'CIP4', 'CIP4_NAME', 'CIP2', 'CIP2_NAME', 'SOC_2021_2', 'SOC_2021_2_NAME', 'SOC_2021_3', 'SOC_2021_3_NAME', 'SOC_2021_4', 'SOC_2021_4_NAME', 'SOC_2021_5', 'SOC_2021_5_NAME', 'LOT_CAREER_AREA', 'LOT_CAREER_AREA_NAME', 'LOT_OCCUPATION', 'LOT_OCCUPATION_NAME', 'LOT_SPECIALIZED_OCCUPATION', 'LOT_SPECIALIZED_OCCUPATION_NAME', 'LOT_OCCUPATION_GROUP', 'LOT_OCCUPATION_GROUP_NAME', 'LOT_V6_SPECIALIZED_OCCUPATION', 'LOT_V6_SPECIALIZED_OCCUPATION_NAME', 'LOT_V6_OCCUPATION', 'LOT_V6_OCCUPATION_NAME', 'LOT_V6_OCCUPATION_GROUP', 'LOT_V6_OCCUPATION_GROUP_NAME', 'LOT_V6_CAREER_AREA', 'LOT_V6_CAREER_AREA_NAME', 'SOC_2', 'SOC_2_NAME', 'SOC_3', 'SOC_3_NAME', 'SOC_4', 'SOC_4_NAME', 'SOC_5', 'SOC_5_NAME', 'LIGHTCAST_SECTORS', 'LIGHTCAST_SECTORS_NAME', 'NAICS_2022_2', 'NAICS_2022_2_NAME', 'NAICS_2022_3', 'NAICS_2022_3_NAME', 'NAICS_2022_4', 'NAICS_2022_4_NAME', 'NAICS_2022_5', 'NAICS_2022_5_NAME', 'NAICS_2022_6', 'NAICS_2022_6_NAME']</code></pre>
@@ -393,9 +394,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="basic-summary-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="basic-summary-statistics">5. Basic Summary Statistics</h2>
-<div id="0c14b2ca" class="cell" data-execution_count="5">
+<div id="1e8fa1e7" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="89">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
 
@@ -629,7 +630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="null-values" class="level2">
 <h2 class="anchored" data-anchor-id="null-values">6. Null values</h2>
-<div id="4377dccf" class="cell" data-execution_count="6">
+<div id="f97e821e" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate count and percentage (multiplied by 100)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>null_summary <span class="op">=</span> pd.concat([df.isnull().<span class="bu">sum</span>(), (df.isnull().mean() <span class="op">*</span> <span class="dv">100</span>)],axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns for clarity</span></span>
@@ -656,7 +657,7 @@ DUPLICATES                    22         0.030346
 </section>
 <section id="box-plot-salary" class="level2">
 <h2 class="anchored" data-anchor-id="box-plot-salary">7. Box Plot (Salary)</h2>
-<div id="630edf47" class="cell" data-execution_count="7">
+<div id="22eaa0e5" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.boxplot(column<span class="op">=</span><span class="st">'SALARY'</span>, by<span class="op">=</span><span class="st">'NAICS2_NAME'</span>, vert<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -670,7 +671,7 @@ DUPLICATES                    22         0.030346
 </section>
 <section id="sector-wise-salary" class="level2">
 <h2 class="anchored" data-anchor-id="sector-wise-salary">8. Sector Wise Salary</h2>
-<div id="27fbe04e" class="cell" data-execution_count="8">
+<div id="f559df4c" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> df.groupby(<span class="st">'NAICS2_NAME'</span>).agg(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    max_value<span class="op">=</span>(<span class="st">'SALARY'</span>, <span class="st">'max'</span>),</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    min_value<span class="op">=</span>(<span class="st">'SALARY'</span>, <span class="st">'min'</span>),</span>
@@ -731,7 +732,7 @@ Wholesale Trade                                     110030.412162  </code></pre>
 </section>
 <section id="clean-data" class="level2">
 <h2 class="anchored" data-anchor-id="clean-data">9. Clean Data</h2>
-<div id="00c2b667" class="cell" data-execution_count="9">
+<div id="8f0aba18" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_salary <span class="op">=</span> df.copy()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>df_salary <span class="op">=</span> df_salary[</span>
@@ -746,7 +747,7 @@ Wholesale Trade                                     110030.412162  </code></pre>
 </section>
 <section id="ai-vs-non-ai" class="level2">
 <h2 class="anchored" data-anchor-id="ai-vs-non-ai">10. AI vs Non AI</h2>
-<div id="7e741595" class="cell" data-execution_count="10">
+<div id="08d2d7a3" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ai_keywords <span class="op">=</span> [<span class="st">'data scientist'</span>, <span class="st">'machine learning'</span>, <span class="st">'ai'</span>, <span class="st">'artificial intelligence'</span>, <span class="st">'nlp'</span>]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>df_salary[<span class="st">'is_ai'</span>] <span class="op">=</span> df_salary[<span class="st">'TITLE_NAME'</span>].<span class="bu">str</span>.lower().<span class="bu">apply</span>(</span>
@@ -765,7 +766,7 @@ Name: avg_salary, dtype: float64</code></pre>
 </section>
 <section id="ai-vs-non-ai-plot" class="level2">
 <h2 class="anchored" data-anchor-id="ai-vs-non-ai-plot">11. AI vs Non AI-Plot</h2>
-<div id="415c22a7" class="cell" data-execution_count="11">
+<div id="6dc9dd58" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ai_vs_nonai.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'AI vs Non-AI Salary Comparison'</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Salary'</span>)</span>
@@ -782,7 +783,7 @@ Name: avg_salary, dtype: float64</code></pre>
 </section>
 <section id="region-wise---salary" class="level2">
 <h2 class="anchored" data-anchor-id="region-wise---salary">12. Region Wise - Salary</h2>
-<div id="dba1f18e" class="cell" data-execution_count="12">
+<div id="b9b64a41" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>region_salary <span class="op">=</span> df_salary.groupby(<span class="st">'STATE_NAME'</span>)[<span class="st">'avg_salary'</span>].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(region_salary.head(<span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -804,7 +805,7 @@ Name: avg_salary, dtype: float64</code></pre>
 </section>
 <section id="region-wise---salary-plot" class="level2">
 <h2 class="anchored" data-anchor-id="region-wise---salary-plot">13. Region Wise - Salary Plot</h2>
-<div id="ce4ffb66" class="cell" data-execution_count="13">
+<div id="8c702f3e" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>region_salary.head(<span class="dv">10</span>).plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top 10 States by Salary'</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Salary'</span>)</span>
@@ -821,7 +822,7 @@ Name: avg_salary, dtype: float64</code></pre>
 </section>
 <section id="remote-vs-onsite" class="level2">
 <h2 class="anchored" data-anchor-id="remote-vs-onsite">14. Remote VS Onsite</h2>
-<div id="8411e2f0" class="cell" data-execution_count="14">
+<div id="1e110a8a" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>remote_salary <span class="op">=</span> df_salary.groupby(<span class="st">'REMOTE_TYPE_NAME'</span>)[<span class="st">'avg_salary'</span>].mean()</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(remote_salary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -836,7 +837,7 @@ Name: avg_salary, dtype: float64</code></pre>
 </section>
 <section id="remote-vs-onsite---plot" class="level2">
 <h2 class="anchored" data-anchor-id="remote-vs-onsite---plot">15. Remote VS Onsite - Plot</h2>
-<div id="686149da" class="cell" data-execution_count="15">
+<div id="c906a8c3" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>remote_salary.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Remote vs Onsite Salary'</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Salary'</span>)</span>
@@ -853,7 +854,7 @@ Name: avg_salary, dtype: float64</code></pre>
 </section>
 <section id="skills" class="level2">
 <h2 class="anchored" data-anchor-id="skills">16. Skills</h2>
-<div id="b162246e" class="cell" data-execution_count="16">
+<div id="ca22eafd" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>skills_series <span class="op">=</span> df[<span class="st">'SKILLS_NAME'</span>].dropna().<span class="bu">str</span>.split(<span class="st">';'</span>)</span>
@@ -883,6 +884,51 @@ Name: avg_salary, dtype: float64</code></pre>
 <div>
 <figure class="figure">
 <p><img src="da_files/figure-html/cell-17-output-2.png" width="735" height="730" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="software" class="level2">
+<h2 class="anchored" data-anchor-id="software">17. Software</h2>
+<div id="e20e7f93" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="vs">r'</span><span class="kw">(</span><span class="ch">\.</span><span class="vs">NET</span><span class="cf">|</span><span class="dv">\b</span><span class="vs">Java</span><span class="dv">\b</span><span class="cf">|</span><span class="dv">\b</span><span class="vs">Python</span><span class="dv">\b</span><span class="cf">|</span><span class="dv">\b</span><span class="vs">SQL</span><span class="dv">\b</span><span class="kw">)</span><span class="vs">'</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Extract, fill missing with 'Others', and clean up casing</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>df_salary[<span class="st">'SOFT_SKILL'</span>] <span class="op">=</span> (</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    df_salary[<span class="st">'SOFTWARE_SKILLS_NAME'</span>]</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">str</span>.extract(pattern, flags<span class="op">=</span>re.IGNORECASE, expand<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    .fillna(<span class="st">'Others'</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Aggregate and sort for a better visual</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>soft_skill <span class="op">=</span> df_salary.groupby(<span class="st">'SOFT_SKILL'</span>)[<span class="st">'avg_salary'</span>].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Plot</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soft_skill)</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>soft_skill.plot(kind<span class="op">=</span><span class="st">'bar'</span>, color<span class="op">=</span><span class="st">'teal'</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average Salary by Software Skill'</span>)</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Salary'</span>)</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Software Skill'</span>)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>SOFT_SKILL
+Java      137196.448310
+Sql       123800.047170
+.NET      121329.456522
+Others    117569.947449
+Python    116640.797641
+SQL       103836.184206
+Name: avg_salary, dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="da_files/figure-html/cell-18-output-2.png" width="662" height="470" class="figure-img"></p>
 </figure>
 </div>
 </div>

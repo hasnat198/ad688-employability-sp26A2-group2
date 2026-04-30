@@ -181,3 +181,32 @@ plt.show()
 
 ```
 
+## 17. Software
+
+```{python}
+
+import re
+
+pattern = r'(\.NET|\bJava\b|\bPython\b|\bSQL\b)'
+
+# 2. Extract, fill missing with 'Others', and clean up casing
+df_salary['SOFT_SKILL'] = (
+    df_salary['SOFTWARE_SKILLS_NAME']
+    .str.extract(pattern, flags=re.IGNORECASE, expand=False)
+    .fillna('Others')
+)
+
+# 3. Aggregate and sort for a better visual
+soft_skill = df_salary.groupby('SOFT_SKILL')['avg_salary'].mean().sort_values(ascending=False)
+
+# 4. Plot
+print(soft_skill)
+soft_skill.plot(kind='bar', color='teal')
+plt.title('Average Salary by Software Skill')
+plt.ylabel('Average Salary')
+plt.xlabel('Software Skill')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+```
